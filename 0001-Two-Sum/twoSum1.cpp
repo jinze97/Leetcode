@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <iterator>
 
 using namespace std;
 
@@ -35,7 +36,9 @@ int main() {
 
     vector<int> nums = {0,4,3,5};
     int target = 9;
-    print_vec(Solution().twoSum(nums, target));
 
+    auto res = Solution().twoSum(nums, target);
+    std::copy(res.begin(), res.end(), std::ostream_iterator<int>(cout, " "));
+    
     return 0;
 }
