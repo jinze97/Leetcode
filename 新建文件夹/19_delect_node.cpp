@@ -1,17 +1,17 @@
-
 #include <iostream>
 #include <vector>
+#include "tools_stack.cpp"
 
 using namespace std;
 
 // 给定一个链表，删除链表的倒数第 n 个节点，并且返回链表的头结点。
- struct ListNode {
-     int val;
-     ListNode *next;
-     ListNode() : val(0), next(nullptr) {}
-     ListNode(int x) : val(x), next(nullptr) {}
-     ListNode(int x, ListNode *next) : val(x), next(next) {}
- };
+ // struct ListNode {
+ //     int val;
+ //     ListNode *next;
+ //     ListNode() : val(0), next(nullptr) {}
+ //     ListNode(int x) : val(x), next(nullptr) {}
+ //     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ // };
 
 class Solution {
 public:
@@ -58,33 +58,6 @@ public:
         return head;
     }
 };
-
-
-ListNode* createList(::vector<int> arr)
-{
-    ListNode *head, *p;
-    head = new ListNode;
-    p = head;
-    for (const auto &data: arr) {
-        ListNode* temp = new ListNode(data);
-        p->next = temp;
-        p = temp;
-    }
-
-    return head;
-}
-
-void printList(ListNode* head)
-{
-    if (nullptr == head) return;
-    head = head->next;
-    while (head != nullptr) {
-        ::cout << head->val << " ";
-        head = head->next;
-    }
-    ::cout << ::endl;
-}
-
 
 
 

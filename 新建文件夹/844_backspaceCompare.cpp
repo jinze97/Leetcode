@@ -8,8 +8,16 @@ using namespace std;
 
 class Solution {
 public:
+    bool backspaceCompare(string S, string T) {
+        // return backspaceStack(S, T);  //栈
+
+        return backspacePtr(S, T);   //双指针法
+        // return backspacePtr_1(S, T);
+    }
+
+
     int getBackspaceNum(string str, int index) {
-        int skip = 0;
+        int skip = 0;           // 记录连续#个数
         while(index >= 0) {
           if ('#' == str[index]) {
               ++skip, index--;
@@ -22,47 +30,51 @@ public:
         return index;
     }
 
-    bool backspaceCompare(string S, string T) {
+    // 双指针， 逆序遍历字符串，统计退格符数量，删除字符
+    // 时间复杂度：O(N+M)O(N+M)，其中 NN 和 MM 分别为字符串 SS 和 TT 的长度，需要遍历两字符串各一次。
+    bool backspacePtr(string S, string T) {
         int i = S.length() - 1, j = T.length() - 1;
-        int skipS = 0, skipT = 0;   //记录连续#个数
-
         while (i >= 0 || j >= 0) {
-            i = getBackspaceNum(S, i);
-            j = getBackspaceNum(T, j);
-
-            if (S[i] != T[j]) {
-                return false;
+            i = getBackspaceNum(S, i), j = getBackspaceNum(T, j);
+            if (i >= 0 && j >= 0) {
+                if (S[i] != T[j]) {
+                    return false;
+                }
+            } else {
+                if (i >= 0 || j >= 0) {
+                    // 有其中一方已经遍历完整个字符串, 但另外一方没有遍历完整个字符串, 直接返回false
+                    return false;
+                }
             }
             i--, j--;
-            ::cout << getBackspaceNum(S, i) << "\n";
-            ::cout << getBackspaceNum(T, j) << "\n";
         }
-
-        return true;
-        // while (i >= 0 || j >= 0) {
-        //     while (i > 0) {
-        //         if (S[i] == '#') {
-        //             skipS++;, i--;
-        //         } else if (skipS > 0) {
-        //             skipS--; --;
-        //         } else {
-        //             break;
-        //         }
-        //     }
-        // }
+        return i < 0 && j < 0;
         // return true;
     }
 
-    // bool backspaceCompare(string S, string T) {
-    //     std::stack<char> stack_s, stack_t;
-    //     parseString(S, stack_s);
-    //     parseString(T, stack_t);
-    //     printStack(stack_s);
-    //     printStack(stack_t);
+    bool backspacePtr_1(string S, string T) {
+        int i = S.length() - 1, j = T.length() - 1;
+        while (i >= 0 || j >= 0) {
+            i = getBackspaceNum(S, i), j = getBackspaceNum(T, j);
+            if (i < 0 || j < 0) {
+                break;
+            }
+            if (S[i--] != T[j--]) return false;
+        }
+        return i < 0 && j < 0;
+    }
 
-    //     return stack_s == stack_t;
-    //     // return build(S) == build(T);
-    // }
+    // 栈解法
+    bool backspaceStack(string S, string T) {
+        std::stack<char> stack_s, stack_t;
+        parseString(S, stack_s);
+        parseString(T, stack_t);
+        printStack(stack_s);
+        printStack(stack_t);
+
+        return stack_s == stack_t;
+        // return build(S) == build(T);
+    }
 
     string build(string str) {
         string ret;
@@ -105,7 +117,7 @@ public:
 
 int main(int argc, char const *argv[])
 {
-    ::string s("ab##");
+    ::string s("ab#c");
     ::string t("ad#c");
 
     ::cout << Solution().backspaceCompare(s, t);

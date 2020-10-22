@@ -71,7 +71,7 @@ ListNode *listReverse(ListNode *pHead)
     if(pHead == nullptr) {
         return pHead;
     }
-    ListNode *pCurrent ,*pPre,*pNext;   //一、指针的初始化阶段
+    ListNode *pCurrent ,*pPre, *pNext;   //一、指针的初始化阶段
     pPre = pHead;
     pCurrent = pPre->next ;
 
