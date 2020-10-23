@@ -120,7 +120,7 @@ int main(int argc, char const *argv[])
     ::string s("ab#c");
     ::string t("ad#c");
 
-    ::cout << Solution().backspaceCompare(s, t);
+    ::cout << boolalpha << Solution().backspaceCompare(s, t);
 
     return 0;
 }

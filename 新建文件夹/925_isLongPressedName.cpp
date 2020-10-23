@@ -62,7 +62,7 @@ int main(int argc, char const *argv[])
     /* code */
     string name = "alex";
     string typed = "aaleex";
-    cout << Solution().isLongPressedName(name, typed);
+    cout << boolalpha << Solution().isLongPressedName(name, typed);
     return 0;
 }
 
