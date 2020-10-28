@@ -1,8 +1,7 @@
 #include <vector>
 #include <queue>
-#include <iostream>
-
-
+#include <stack>
+// #include <iostream>
 #define null 65535
 
 
@@ -79,16 +78,60 @@ TreeNode* createBinaryTree(std::vector<int> arr)
 
 
 
-///先序遍历输出
-void PreTraversal(TreeNode *p) {
-    if (p != NULL) {
-        std::cout << p->val << " ";
-        PreTraversal(p->left);
-        PreTraversal(p->right);
+// 先序遍历
+void preTraversal(TreeNode *root) {
+    if (root != NULL) {
+        std::cout << root->val << " ";
+        preTraversal(root->left);
+        preTraversal(root->right);
     }
 }
 
 
+// // 先序遍历
+// std::vector<int> preTraversal(TreeNode* root) {
+//     std::vector<int> res;
+//     if (root == nullptr) return res;
+//     // 初始化栈，并将根节点入栈
+//     std::stack<TreeNode*> stk;
+//     TreeNode* node;
+//     stk.emplace(root);
+//     while (!stk.empty()) {
+//         //弹出栈顶元素 node
+//         node = stk.top();
+//         stk.pop();
+//         if (node != nullptr) {
+//             res.emplace_back(node->val);
+//             if (node->right != nullptr) {
+//                 stk.emplace(node->right);   //右子树入栈
+//             }
+//             if (node->left != nullptr) {
+//                 stk.emplace(node->left);   //左子树入栈
+//             }
+//         }
+//     }
+//     return res;
+// }
+
+
+// // 先序遍历 递归版本
+// std::vector<int> preTraversal(TreeNode* root) {
+//     std::vector<int> res;
+//     preTraversal_recursive(r33oot, res);
+//     // copy(res.begin(), res.end(), ostream_iterator<int>(cout, " "));
+//     return res;
+// }
+// void preTraversal_recursive(TreeNode* root, std::vector<int>& arr) {
+//     if (root) {
+//         arr.push_back(root->val);
+//         preTraversal_recursive(root->left, arr);
+//         preTraversal_recursive(root->right, arr);
+//     }
+// }
+
+
+
+// BFS 迭代版本
 void levelOrder(TreeNode* root) {
     std::queue <TreeNode*> q;
     q.push(root);
@@ -102,47 +145,54 @@ void levelOrder(TreeNode* root) {
 }
 
 
-std::vector<std::vector<int>> levelOrder_1(TreeNode* root) {
-    std::vector <std::vector <int>> ret;
-    if (!root) {
-        return ret;
-    }
-
-    std::queue <TreeNode*> q;
-    q.push(root);
-    while (!q.empty()) {
-        int currentLevelSize = q.size();
-        ret.push_back(std::vector <int> ());
-        for (int i = 1; i <= currentLevelSize; ++i) {
-            auto node = q.front(); q.pop();
-            ret.back().push_back(node->val);
-            if (node->left) q.push(node->left);
-            if (node->right) q.push(node->right);
-        }
-    }
-
-    return ret;
-}
-
-
-
-// void pre(TreeNode *root, int depth) {
-//         if (!root) return ;
-//         if (depth >= ans.size())
-//             ans.push_back(vector<int> {});
-//         ans[depth].push_back(root->val);
-//         pre(root->left, depth + 1, ans);
-//         pre(root->right, depth + 1, ans);
+// // BFS 迭代版本
+// std::vector<std::vector<int>> levelOrder(TreeNode* root) {
+//     std::vector <std::vector <int>> ret;
+//     if (!root) {
+//         return ret;
 //     }
 
+//     std::queue <TreeNode*> q;
+//     q.push(root);
+//     while (!q.empty()) {
+//         int currentLevelSize = q.size();
+//         ret.push_back(std::vector <int> ());
+//         for (int i = 1; i <= currentLevelSize; ++i) {
+//             auto node = q.front(); q.pop();
+//             ret.back().push_back(node->val);
+//             if (node->left) q.push(node->left);
+//             if (node->right) q.push(node->right);
+//         }
+//     }
 
-int main(int argc, char const *argv[])
-{
-    /* code */
-    std::cout << 0/2 << std::endl;
-    std::vector<int> Data{3, 9, 20, null, null, 15, 7};
-    TreeNode* root = createBinaryTree(Data);
-    PreTraversal(root);
+//     return ret;
+// }
 
-    return 0;
-}
+
+// // BFS 递归版本
+// std::vector<std::vector<int>> levelOrder(TreeNode* root) {
+//     std::vector<std::vector<int>> ans;
+//     levelOrder_recursive(root, 0, ans);
+//     return ans;
+// }
+// void levelOrder_recursive(TreeNode *root, int depth, std::vector<std::vector<int>> &ans) {
+//     if (!root) return ;
+//     if (depth >= ans.size())
+//         ans.push_back(vector<int> {});
+//     ans[depth].push_back(root->val);
+//     levelOrder_recursive(root->left, depth + 1, ans);
+//     levelOrder_recursive(root->right, depth + 1, ans);
+// }
+
+
+
+
+// int main(int argc, char const *argv[])
+// {
+//     /* code */
+//     std::vector<int> Data{3, 9, 20, null, null, 15, 7};
+//     TreeNode* root = createBinaryTree(Data);
+//     preTraversal(root);
+
+//     return 0;
+// }

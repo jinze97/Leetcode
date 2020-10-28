@@ -66,6 +66,9 @@ ListNode* createList(std::vector<int> arr)
         p->next = temp;
         p = temp;
     }
-
+    // // 删除哑节点
+    // p = head;
+    // head = head->next;
+    // delete p;
     return head;
 }

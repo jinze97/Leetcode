@@ -7,6 +7,7 @@ using namespace std;
 struct ListNode {
     int val;
     ListNode *next;
+    ListNode() : val(0), next(nullptr) {}
     ListNode(int x) : val(x), next(nullptr) {}
 };
 
@@ -21,58 +22,48 @@ int printList(ListNode * list)
     return 1;
 }
 
-bool insertList(ListNode* list, int idx, int data)
-{
+// bool insertList(ListNode* list, int idx, int data)
+// {
+//     if (idx < 1) {
+//         return false;
+//     }
 
-    if (idx < 1) {
-        return false;
-    }
+//     ListNode* p = list;
+//     int j=1;
+//     while (p &&  j<idx) {
+//         p = p->next;
+//         ++j;
+//     }
 
-    ListNode* p = list;
-    int j=1;
-    while (p &&  j<idx) {
-        p = p->next;
-        ++j;
-    }
+//     if (!p || j>idx) {
+//         return false;
+//     }
 
-    if (!p || j>idx) {
-        return false;
-    }
+//     ListNode* s = new ListNode(data);
+//     s->next = p->next;
+//     p->next = s;
+//     return true;
+// }
 
-    ListNode* s = new ListNode(data);
-    s->next = p->next;
-    p->next = s;
-    return true;
-}
-
-bool pushList(ListNode* list, int data)
-{
-    while(list->next != nullptr){
-        list = list->next;
-    }
-    ListNode* node = new ListNode(data);
-    list->next = node;
-    return true;
-}
-
-
-bool getNextFreeNode(ListNode ** node) {
-    if (*node == nullptr) {
-        return false;
-    }
-    ListNode *tmp = *node;
-    *node = (*node)->next;
-    delete tmp;
-    return true;
-}
 
 
 class Solution {
 public:
+    bool getNextFreeNode(ListNode ** node) {
+        if (*node == nullptr) {
+            return false;
+        }
+        ListNode *tmp = *node;
+        *node = (*node)->next;
+        delete tmp;
+        return true;
+    }
+
     ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
         ListNode *resList = new ListNode(0);
         ListNode *cursor = resList;
         int carry = 0;
+
         while(l1 != nullptr || l2 != nullptr || carry != 0) {
             int l1Val = l1 != nullptr? l1->val : 0;
             int l2Val = l2 != nullptr? l2->val : 0;
@@ -84,37 +75,47 @@ public:
             cursor = node;
 
             if(l1 != nullptr) {
-                getNextFreeNode(&l1);
-                // tmp = l1;
-                // l1 = l1->next;
-                // delete tmp;
+                // getNextFreeNode(&l1);
+                l1 = l1->next;
             }
 
             if(l2 != nullptr) {
-                getNextFreeNode(&l2);
-                // tmp = l2;
-                // l2 = l2->next;
-                // delete tmp;
+                // getNextFreeNode(&l2);
+                l2 = l2->next;
             }
         }
-        getNextFreeNode(&resList);
+        getNextFreeNode(&resList);  //删除头部哑节点
         return resList;
     }
 };
 
 
+ListNode* createList(std::vector<int> arr)
+{
+    ListNode *head, *p;
+    head = new ListNode;
+    p = head;
+    for (const auto &data: arr) {
+        ListNode* temp = new ListNode(data);
 
+        p->next = temp;
+        p = temp;
+    }
+
+    // 删除哑节点
+    p = head;
+    head = head->next;
+    delete p;
+    return head;
+}
 
 
 int main() {
+    std::vector<int> arr{2,4,3};
+    ListNode* list1 = createList(arr);
 
-    ListNode* list1= new ListNode(2);
-    pushList(list1, 4);
-    pushList(list1, 3);
-
-    ListNode* list2= new ListNode(5);
-    pushList(list2, 6);
-    pushList(list2, 4);
+    std::vector<int> arr1{5,6,4};
+    ListNode* list2 = createList(arr1);
 
     printList(list1);
     printList(list2);

@@ -14,12 +14,17 @@ public:
                 return {hash[target - nums[i]], i};
                 // return {hash.at(target - nums[i]), i};
             }
-            hash[nums[i]] = i;
+
+            // 重复元素不插入
+            if (!hash.count(nums[i])) {
+                hash[nums[i]] = i;
+            }
             // hash.insert({nums[i], i});
         }
 
         return {-1, -1};
     }
+
 
 };
 
@@ -32,7 +37,7 @@ void print_vec(const vector<int>& vec){
 
 int main() {
 
-    vector<int> nums = {0,4, 6, 7, 8, 2, 3, 5};
+    vector<int> nums = {2, 2, 6, 7, 8, 2, 3, 5};
     int target = 9;
     // Solution().twoSum(nums, target);
     print_vec(Solution().twoSum(nums, target));
