@@ -1,12 +1,11 @@
 #include <iostream>
 #include <vector>
 #include "tools_list.cpp"
-#include "tools_vector.cpp"
 #include <algorithm>
 
 using namespace std;
 
-
+// https://leetcode-cn.com/problems/palindrome-linked-list/
 class Solution {
 public:
     bool isPalindrome(ListNode* head) {

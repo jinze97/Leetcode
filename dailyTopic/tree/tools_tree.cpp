@@ -142,6 +142,7 @@ void levelOrder(TreeNode* root) {
         if (node->left) q.push(node->left);
         if (node->right) q.push(node->right);
     }
+    std::cout << std::endl;
 }
 
 

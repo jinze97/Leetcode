@@ -5,7 +5,7 @@
 using namespace std;
 
 
-
+// https://leetcode-cn.com/problems/long-pressed-name/
 class Solution {
 public:
     bool isLongPressedName(string name, string typed) {
@@ -38,6 +38,7 @@ public:
 
         return pos_i == name.length();
     }
+
 
     bool isLongPressedName_2(string name, string typed) {
         int pos_i = 0, pos_j = 0;

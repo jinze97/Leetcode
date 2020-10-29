@@ -13,6 +13,8 @@ using namespace std;
  //     ListNode(int x, ListNode *next) : val(x), next(next) {}
  // };
 
+
+// https://leetcode-cn.com/problems/remove-nth-node-from-end-of-list/
 class Solution {
 public:
     ListNode* removeNthFromEnd(ListNode* head, int n) {

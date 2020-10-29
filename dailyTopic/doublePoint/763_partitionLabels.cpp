@@ -1,29 +1,13 @@
 #include <iostream>
 #include <vector>
-#include "tools_vector.cpp"
 #include <algorithm>
-#include <map>
+#include <iterator>
 #include <unordered_map>
 
 using namespace std;
 
 
-
-
-void print(vector<vector<int>>& intervals)
-{
-    ::cout << '(';
-    for(auto i: intervals) {
-        ::cout << '(';
-        for(auto j: i) {
-            ::cout << j << ' ';
-        }
-        ::cout << "), ";
-    }
-    ::cout << ')';
-    ::cout << ::endl;
-}
-
+// https://leetcode-cn.com/problems/partition-labels/
 class Solution {
 public:
     vector<int> partitionLabels(string S) {
@@ -101,13 +85,12 @@ public:
 };
 
 
-
 int main(int argc, char const *argv[])
 {
     /* code */
     string str = "ababcbacadefegdehijhklij";
-    print(Solution().partitionLabels(str));
-    // cout << Solution().isLongPressedName(name, typed);
+    auto res = Solution().partitionLabels(str);
+    copy(res.begin(), res.end(), ostream_iterator<int>(cout, " "));
     return 0;
 }
 

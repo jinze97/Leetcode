@@ -5,6 +5,7 @@
 
 using namespace std;
 
+// https://leetcode-cn.com/problems/unique-number-of-occurrences/
 class Solution {
 public:
     bool uniqueOccurrences(vector<int>& arr) {

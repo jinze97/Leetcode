@@ -6,6 +6,8 @@
 
 using namespace std;
 
+
+// https://leetcode-cn.com/problems/backspace-string-compare/
 class Solution {
 public:
     bool backspaceCompare(string S, string T) {
@@ -15,7 +17,7 @@ public:
         // return backspacePtr_1(S, T);
     }
 
-
+    // 返回连续#个数
     int getBackspaceNum(string str, int index) {
         int skip = 0;           // 记录连续#个数
         while(index >= 0) {

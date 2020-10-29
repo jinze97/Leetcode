@@ -1,13 +1,11 @@
 #include <iostream>
-#include <stack>
 #include <algorithm>
 #include <iterator>
 #include <vector>
-#include "tools_vector.cpp"
 
 using namespace std;
 
-
+// https://leetcode-cn.com/problems/how-many-numbers-are-smaller-than-the-current-number/solution/you-duo-shao-xiao-yu-dang-qian-shu-zi-de-shu-zi--2/
 class Solution {
 public:
     void swap(int & a, int& b) {
@@ -61,7 +59,8 @@ public:
 
 int main(int argc, char const *argv[])
 {
-    ::vector<int> nums = {37,64,63,2,41,78,51,36,2,20,25,41,72,100,17,43,54,27,34,86,12,48,70,44,87,68,62,98,68,30,8,92,5,10};
-    print(Solution().smallerNumbersThanCurrent(nums));
+    ::vector<int> nums = {8, 1, 2, 2, 3};
+    auto res = Solution().smallerNumbersThanCurrent(nums);
+    copy(res.begin(), res.end(), ostream_iterator<int>(cout, " "));
 }
 

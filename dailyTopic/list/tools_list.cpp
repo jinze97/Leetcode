@@ -25,6 +25,7 @@ ListNode* middleNode(ListNode* head) {
     return slow;
 }
 
+
 ListNode* reverseList(ListNode* head) {
     if (nullptr == head) return nullptr;
     ListNode* pre = nullptr;
