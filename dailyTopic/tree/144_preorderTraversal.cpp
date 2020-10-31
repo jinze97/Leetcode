@@ -14,9 +14,9 @@ class Solution {
 public:
     vector<int> preorderTraversal(TreeNode* root) {
         // return preorderTraversal_0(root);
-        // return preorderTraversal_1(root);
+        return preorderTraversal_1(root);
         // return preorderTraversal_1_1(root);
-        return morrisInorderTraverse(root);
+        // return morrisInorderTraverse(root);
     }
 
     // https://leetcode-cn.com/problems/binary-tree-preorder-traversal/solution/leetcodesuan-fa-xiu-lian-dong-hua-yan-shi-xbian-2/
@@ -54,6 +54,7 @@ public:
     }
 
 
+    // dfs 迭代解法
     vector<int> preorderTraversal_1(TreeNode* root) {
         vector<int> res;
         if (root == nullptr) return res;
@@ -79,6 +80,7 @@ public:
     }
 
 
+    // dfs 迭代解法
     vector<int> preorderTraversal_1_1(TreeNode* root) {
         vector<int> res;
         if (root == nullptr) return res;
