@@ -17,7 +17,11 @@ public:
 
     vector<string> wordBreak(string s, vector<string>& wordDict) {
         wordSet = unordered_set<string>(wordDict.begin(), wordDict.end());
-        return dfs(s, 0);
+        unordered_map<int, vector<string>> memo;  //记录子函数调用结果
+        return dfs(s, 0, memo);
+
+
+
 
         // backtrack(s, 0);
         // for (auto i: ans) {
@@ -30,23 +34,30 @@ public:
         // return ans[0];
     }
 
-    vector<string> dfs(const string& s, int index) {
-        if (index >= s.size()-1) {
+    vector<string> dfs(const string& s, int index, unordered_map<int, vector<string>>& memo) {
+        // 遇到相同的子问题时，直接返回 memo 中的缓存值，避免进入重复的递归
+        if (memo.count(index)) {
+            return memo[index];
+        }
+
+        if (index == s.size()) {
             return {""};
         }
+
         vector<string> res = {};
         for (int i = index + 1; i <= s.size(); ++i) {
             string word = s.substr(index, i - index);           // 切出一个子串，看看是不是单词
             if (wordSet.count(word)) {
-                auto restRes = dfs(s, i);
+                auto restRes = dfs(s, i, memo);
                 for (const string& succ: restRes) {
                     res.push_back(succ.empty() ? word : word + " " + succ);
                 }
             }
         }
-
+        memo[index] = res;
         return res;
     }
+
 
     // void backtrack(const string& s, int index) {
     //     // if (ans.count(index)) {     //跳过已搜寻的index
