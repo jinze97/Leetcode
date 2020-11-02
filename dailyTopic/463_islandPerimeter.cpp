@@ -1,6 +1,5 @@
 #include <iostream>
 #include <vector>
-#include <cassert>
 #include <algorithm>
 #include <iterator>
 using namespace std;
