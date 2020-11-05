@@ -12,8 +12,28 @@ using namespace std;
 class Solution {
 public:
     vector<int> intersection(vector<int>& nums1, vector<int>& nums2) {
-        return doublePoint(nums1, nums2);
+        // return doublePoint(nums1, nums2);
         // return intersection_1(nums1, nums2);
+        return STL(nums1, nums2);
+    }
+
+    vector<int> STL(vector<int>& nums1, vector<int>& nums2) {
+        vector<int> v_intersection;
+        std::sort(nums1.begin(), nums1.end());
+        std::sort(nums2.begin(), nums2.end());
+
+
+        // // 求交集 必须先排序
+        // std::set_intersection(nums1.begin(), nums1.end(), nums2.begin(), nums2.end(), std::back_inserter(v_intersection));
+        // return v_intersection;
+
+        // 求差集 必须先排序
+        // set_difference(nums1.begin(), nums1.end(), nums2.begin(), nums2.end(), std::back_inserter(v_intersection));
+
+        // 求并集 必须先排序
+        std::set_union(nums1.begin(), nums1.end(), nums2.begin(), nums2.end(), std::back_inserter(v_intersection));
+
+        return v_intersection;
     }
 
     vector<int> doublePoint(vector<int>& nums1, vector<int>& nums2) {
@@ -76,7 +96,6 @@ int main() {
     vector<int> nums1 = {4,9,5};
     vector<int> nums2 = {9,4,9,8,4};
     auto res = Solution().intersection(nums1, nums2);
-    cout << endl << "res: " << res.size() <<  endl;
     copy(res.begin(), res.end(), ostream_iterator<int>(cout, " "));
 
     return 0;
