@@ -21,10 +21,15 @@ public:
     }
 
     vector<int> sortByBits(vector<int>& arr) {
-        sort(arr.begin(),arr.end(),[&](int x,int y){
-            int numa = count_one(x), numb = count_one(y);
-            return numa != numb? numa < numb: x < y;
-        });
+        // 黑科技
+        sort(arr.begin(), arr.end(), [](int a,int b) {
+            return __builtin_popcount(a) < __builtin_popcount(b) || (__builtin_popcount(a) == __builtin_popcount(b) && a < b);});
+
+
+        // sort(arr.begin(),arr.end(),[&](int x,int y){
+        //     int numa = count_one(x), numb = count_one(y);
+        //     return numa != numb? numa < numb: x < y;
+        // });
         return arr;
 
     }
