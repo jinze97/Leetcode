@@ -73,3 +73,20 @@ ListNode* createList(std::vector<int> arr)
     // delete p;
     return head;
 }
+
+ListNode* createList_NoHead(std::vector<int> arr)
+{
+    ListNode *head, *p;
+    head = new ListNode;
+    p = head;
+    for (const auto &data: arr) {
+        ListNode* temp = new ListNode(data);
+        p->next = temp;
+        p = temp;
+    }
+    // 删除哑节点
+    p = head;
+    head = head->next;
+    delete p;
+    return head;
+}

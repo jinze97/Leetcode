@@ -37,7 +37,7 @@ public:
 };
 
 int main() {
-    vector<int> num = {-2,5,-1};
+    vector<int> num = {-2, 5, -1};
     int lower = -2, upper = 2;
     cout <<  Solution().countRangeSum(num, lower, upper);
     return 0;

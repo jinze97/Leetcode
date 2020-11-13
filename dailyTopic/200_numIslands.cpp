@@ -10,7 +10,7 @@ using namespace std;
 class Solution {
 public:
     int numIslands(vector<vector<char>>& grid) {
-        // return islandPerimeter_2(grid);
+        // return dfs_helper(grid);
         return bfs(grid);
     }
 
@@ -56,7 +56,7 @@ public:
 
 
     // 遍历岛这个二维数组，如果当前数为1，则进入感染函数并将岛个数+1
-    int islandPerimeter_2(vector<vector<char>>& grid) {
+    int dfs_helper(vector<vector<char>>& grid) {
         int res = 0 ;
         for (int i = 0; i < grid.size(); ++i) {
             for (int j = 0; j < grid[0].size(); ++j) {
@@ -98,7 +98,6 @@ void print_vec(const vector<vector<char>>& vec){
 
 
 int main() {
-
     vector<vector<char>> nums = {{'1','1','0','0','0'}, {'1','1','0','0','0'}, {'0','0','1','0','0'}, {'0','0','0','1','1'}};
     print_vec(nums);
     cout <<  Solution().numIslands(nums);

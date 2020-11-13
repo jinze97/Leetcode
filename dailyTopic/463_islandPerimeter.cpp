@@ -9,8 +9,8 @@ using namespace std;
 class Solution {
 public:
     int islandPerimeter(vector<vector<int>>& grid) {
-        // return islandPerimeter_1(grid);
-        return islandPerimeter_2(grid);
+        return islandPerimeter_1(grid);
+        return dfs_helper(grid);
     }
 
     int islandPerimeter_1(vector<vector<int>>& grid) {
@@ -32,7 +32,7 @@ public:
         return res;
     }
 
-    int islandPerimeter_2(vector<vector<int>>& grid) {
+    int dfs_helper(vector<vector<int>>& grid) {
         for (int i = 0; i < grid.size(); ++i) {
             for (int j = 0; j < grid[0].size(); ++j) {
                 if (grid[i][j] == 1) {
