@@ -12,8 +12,8 @@ public:
     int canCompleteCircuit(vector<int>& gas, vector<int>& cost) {
         return canCompleteCircuit_1(gas, cost);
         return canCompleteCircuit_2(gas, cost);
-
     }
+
 
     int canCompleteCircuit_1(vector<int>& gas, vector<int>& cost) {
         int rest = 0;   // 总共消耗的油
@@ -29,6 +29,7 @@ public:
         }
         return rest < 0 ? -1: start;
     }
+
 
     int canCompleteCircuit_2(vector<int>& gas, vector<int>& cost) {
         vector<int> a;  // 记录到每个点的收益
