@@ -93,11 +93,11 @@ public:
         });
         vector<vector<int>>ans(n);
         vector<bool>dp(n);
-        for(int i = 0; i != n; ++i) {
+        for (int i = 0; i != n; ++i) {
             int t = 0;
-            for(int b = 0; b != n; ++b) {
-                if(dp[b] == 0) {
-                    if(t == people[i][1]) {
+            for (int b = 0; b != n; ++b) {
+                if (dp[b] == 0) {
+                    if (t == people[i][1]) {
                         dp[b] = 1;
                         ans[b] = people[i];
                         break;
@@ -109,6 +109,7 @@ public:
         return ans;
     }
 };
+
 
 void print_vec(const vector<vector<int>>& vec){
     for(auto res: vec) {

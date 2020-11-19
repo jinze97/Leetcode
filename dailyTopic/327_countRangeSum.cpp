@@ -8,6 +8,11 @@ using namespace std;
 class Solution {
 public:
     int countRangeSum(vector<int>& nums, int lower, int upper) {
+        return countRangeSum_1(nums, lower, upper);
+        return countRangeSum_2(nums, lower, upper);
+    }
+
+    int countRangeSum_1(vector<int>& nums, int lower, int upper) {
         int size = nums.size();
         if( size == 0 ) return 0;
         vector<long long > presum;//前缀和数组， [0,i] 区间和
@@ -21,19 +26,19 @@ public:
     }
 
 
-    // int countRangeSum(vector<int>& nums, int lower, int upper) {
-    //     int res = 0;
-    //     for (int i = 0; i < nums.size(); ++i) {
-    //         int count = 0;
-    //         for (int j = i; j < nums.size(); ++j) {
-    //             count += nums[j];
-    //             if (count >= lower && count <= upper) {
-    //                 res++;
-    //             }
-    //         }
-    //     }
-    //     return res;
-    // }
+    int countRangeSum_2(vector<int>& nums, int lower, int upper) {
+        int res = 0;
+        for (int i = 0; i < nums.size(); ++i) {
+            int count = 0;
+            for (int j = i; j < nums.size(); ++j) {
+                count += nums[j];
+                if (count >= lower && count <= upper) {
+                    res++;
+                }
+            }
+        }
+        return res;
+    }
 };
 
 int main() {
