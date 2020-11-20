@@ -14,8 +14,8 @@ using namespace std;
 class Solution {
 public:
     ListNode* insertionSortList(ListNode* head) {
-        return insertionSortList_3(head);
-        return insertionSortList_1(head);
+        // return insertionSortList_3(head);
+        // return insertionSortList_1(head);
         return insertionSortList_2(head);
     }
     ListNode* insertionSortList_3(ListNode* head) {
@@ -90,22 +90,22 @@ public:
     ListNode* insertionSortList_2(ListNode* head) {
         ListNode* dummy = new ListNode(-1);
 
-        ListNode* pNext = head;
-        while (pNext) {
-            ListNode* p = dummy;
+        ListNode* curr = head;
+        while (curr) {
+            ListNode* pre = dummy;
             // 找到需要插入位置点前一节点
-            while (p->next && p->next->val < pNext->val) {
-                p = p->next;  // p为待插入节点位置的前一节点
+            while (pre->next && pre->next->val < curr->val) {
+                pre = pre->next;  // p为待插入节点位置的前一节点
             }
-            ListNode* q = pNext;
-            pNext = pNext->next;  //移动待排序节点时，需要将待处理的节点变为下一节点
+            ListNode* temp = curr->next;  // 记录待处理节点下一节点
+            curr->next = pre->next;       // 待插入节点尾部连接到需要占位点的后一节点
+            pre->next = curr;             // 待插入节点迁移节点连接插入节点
 
-            q->next = p->next;   // 待插入节点尾部连接到需要占位点的后一节点
-            p->next = q;        // 待插入节点迁移节点连接插入节点
+            curr = temp;
         }
-        pNext = dummy->next;
+        curr = dummy->next;
         delete(dummy);
-        return pNext;
+        return curr;
     }
 
 };
