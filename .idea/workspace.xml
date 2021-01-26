@@ -2,18 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e269e068-4dd2-42f3-ae74-4157a898355c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/dailyTopic/200_numIslands.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dailyTopic/delExe.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dailyTopic/tree/144_preorderTraversal.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dailyTopic/tree/144_preorderTraversal.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/dailyTopic/tree/144_preorderTraversal.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="GOROOT" path="D:\Go" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GoLibraries">
+    <option name="indexEntireGoPath" value="false" />
   </component>
   <component name="ProjectId" id="1je0kImZlgaLir7YhUJqK53IQPx" />
   <component name="ProjectViewState">
@@ -24,5 +25,17 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="go.import.settings.migrated" value="true" />
+    <property name="go.sdk.automatically.set" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="779" y="412" key="FileChooserDialogImpl" timestamp="1611481992596">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="779" y="412" key="FileChooserDialogImpl/0.0.2560.1400@0.0.2560.1400" timestamp="1611481992596" />
   </component>
 </project>
