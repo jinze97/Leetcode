@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
-#include <iterator>
-
+#include <numeric>  //iota
+#include <map>
 
 using namespace std;
 
@@ -24,8 +24,8 @@ public:
 
 int main() {
     // vector<int> num{1,3,5,4,7};
-    // vector<vector<int>> dominoes = {{1,2}, {2,1}, {3,4}, {1,2}, {4,3}};
-    vector<vector<int>> dominoes = {{1,2}, {2,1}, {1,2}, {1,2}};
+    vector<vector<int>> dominoes = {{1,2}, {3,4}, {2,1}, {1,2}, {4,3}};
+    // vector<vector<int>> dominoes = {{1,2}, {2,1}, {1,2}, {1,2}};
     cout << Solution().numEquivDominoPairs(dominoes) << endl;
     return 0;
 }
