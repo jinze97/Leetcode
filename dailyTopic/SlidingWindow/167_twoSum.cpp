@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <cassert>
+#include <map>
 
 using namespace std;
 
@@ -11,6 +12,19 @@ public:
     vector<int> twoSum(vector<int>& nums, int target) {
         // return twoSum_1(nums, target);
         return twoSum_2(nums, target);
+    }
+
+    // 哈希表法, 无序数组最优解
+    vector<int> twoSum_3(vector<int>& nums, int target) {
+        std::map<int, int> mp;
+        for (int i = 0; i < nums.size(); ++i) {
+            int key = target - nums[i];
+            if (mp.count(key) > 0 ) {
+                return {i, mp[key]};
+            }
+            mp[nums[i]] = i;
+        }
+        return {-1, -1};
     }
 
 
@@ -33,6 +47,7 @@ public:
     }
 
 
+    // 二分搜索
     vector<int> twoSum_1(vector<int>& nums, int target) {
         for (int i = 0; i < nums.size(); ++i) {
             int data = target - nums[i];
@@ -75,7 +90,8 @@ int main() {
     vector<int> nums = {2, 3, 4, 7, 11, 15};
     int target = 10;
     // Solution().twoSum(nums, target);
-    print_vec(Solution().twoSum(nums, target));
+    // print_vec(Solution().twoSum(nums, target));
+    print_vec(Solution().twoSum_3(nums, target));
 
     return 0;
 }

@@ -18,6 +18,7 @@ public:
     }
 
     int lengthOfLongestSubstring_1(string s) {
+        // 记录每个字符最后出现的下标
         // ASCII表共能表示256个字符，可以记录所有字符
         // int last[256] = {0};
         unordered_map<char, int> last;
